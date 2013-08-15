@@ -1,0 +1,13 @@
+# restart bacula
+#0 13 * * * /usr/local/etc/rc.d/bacula-dir restart
+
+# every sunday run a backup?
+1 5 * * 0 /usr/local/bin/python /home/wu/xenserver-image-backup.py critical
+1 7 * * 0 /usr/local/bin/python /home/wu/xenserver-pool-backup.py non-critical
+
+# every Monday delete old vm
+#1 8 * * 1 /home/wu/delete
+
+# every Tue, delete old vhd backup files
+#55 14 * * 2 /home/wu/delete_backup_2weeks.sh
+
